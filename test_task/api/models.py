@@ -4,11 +4,12 @@ from django.contrib.auth.models import AbstractUser
 
 class ApiUser(AbstractUser):
     class Role(models.TextChoices):
-        ADMIN = "ADMIN", 'Admin'
+        MODERATOR = "MODERATOR", 'Moderator'
         STUDENT = "STUDENT", 'Student'
         TEACHER = "TEACHER", 'Teacher'
 
     role = models.CharField(max_length=50, choices=Role.choices)
+    REQUIRED_FIELDS = ["role"]
 
 
 class Section(models.Model):

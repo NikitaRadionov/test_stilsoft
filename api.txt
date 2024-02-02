@@ -1,0 +1,14 @@
+CREATE_USER
+endpoint: api/auth/users/
+в body обязательно:
+username
+password
+
+GET_TOKEN
+endpoint: api/auth/token/login/
+в body обязательно:
+username
+password
+
+ответ:
+auth_token

@@ -4,6 +4,9 @@ endpoint: api/auth/users/
 username
 password
 
+DELETE_USER
+endpoint: api/auth/users/me
+
 GET_TOKEN
 endpoint: api/auth/token/login/
 в body обязательно:

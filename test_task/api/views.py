@@ -16,15 +16,8 @@ class CreateSectionAPIView(CreateAPIView):
     permission_classes = (IsAuthenticated, )
 
     def post(self, request):
-        # print(request.data) # <QueryDict: {'title': ['Math']}>
-        # print(request.query_params) # <QueryDict: {}>
-        # print(request.user) # newmoder ApiUser obj
-        # print(request.auth) # 787055ed2b63edc93f18d4319e6a9415015d22bc
-        # print(request.authenticators) # [<rest_framework.authentication.TokenAuthentication object at 0x0000021C0C100970>,
-        # # <rest_framework.authentication.BasicAuthentication object at 0x0000021C0C1017E0>,
-        # # <rest_framework.authentication.SessionAuthentication object at 0x0000021C0C101780>]
-        title = request.data['title'] #
-        user = request.user # ApiUser obj
+        title = request.data['title']
+        user = request.user
 
         data = {
             "success": False
@@ -32,7 +25,6 @@ class CreateSectionAPIView(CreateAPIView):
 
         if (user.role == "MODERATOR" or user.role == "TEACHER"):
             if (len(Section.objects.filter(title=title))):
-                # сообщение о том, что такая секция уже есть
                 data["error"]= {
                     "code": 400,
                     "message": "Section already exists"
@@ -272,34 +264,3 @@ class GetStudentSectionsAPIView(ListAPIView):
         user = self.request.user
         queryset = UserSection.objects.filter(student=user)
         return queryset
-
-
-# class GetSectionStudentsAPIView(ListAPIView):
-
-#     permission_classes = (IsAuthenticated, )
-
-#     def get(self, request):
-
-#         title = request.data['title']
-#         user = request.user
-
-#         try:
-#             section = Section.objects.get(title=title)
-#             usersSection = UserSection.objects.filter(section=section)
-#             data = UserSectionSerializer(usersSection).data
-
-#         except Section.DoesNotExist:
-#             data = {"message": "Section does not exists"}
-
-#         return Response(data)
-
-
-# class GetStudentSectionsAPIView(ListAPIView):
-
-#     serializer_class = UserSection
-#     permission_classes = (IsAuthenticated, )
-
-#     def get_queryset(self):
-#         user = self.request.user
-#         queryset = UserSection.objects.filter(student=user)
-#         return queryset

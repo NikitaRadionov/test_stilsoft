@@ -15,5 +15,4 @@ urlpatterns = [
     path('student/getMySections', GetStudentSectionsAPIView.as_view()),
     path('teacher/leadSection', LeadSectionAPIView.as_view()),
     path('teacher/leaveSection', UnleadSectionAPIView.as_view()),
-    # re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]

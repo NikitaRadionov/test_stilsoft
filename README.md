@@ -37,132 +37,132 @@
 - [GET_STUDENT_SECTIONS](#GET_STUDENT_SECTIONS)
 
 ## CREATE_USER:
-- Назначение: Создать пользователя
-- HTTP METHOD: POST
-- endpoint: api/auth/users/
-- в body обязательно: username, password
+- __Назначение__: Создать пользователя
+- __HTTP METHOD__: POST
+- __endpoint__: api/auth/users/
+- __В body обязательно__: username, password
 
 
 ## DELETE_USER:
-- Назначение: Удалить пользователя
-- HTTP METHOD: DELETE
-- endpoint: api/auth/users/me
+- __Назначение__: Удалить пользователя
+- __HTTP METHOD__: DELETE
+- __endpoint__: api/auth/users/me
 
 
 ## GET_TOKEN:
-- Назначение: Получить аутентификационный токен
-- HTTP METHOD: POST
-- endpoint: api/auth/token/login/
-- в body обязательно: username, password
-- ответ: auth_token
+- __Назначение__: Получить аутентификационный токен
+- __HTTP METHOD__: POST
+- __endpoint__: api/auth/token/login/
+- __В body обязательно__: username, password
+- __Ответ__: auth_token
 
 
 ## GET_ALL_USERS:
-- Назначение: Получить всех пользователей
-- HTTP METHOD: GET
-- endpoint: api/getUsers
-- Доступность: All
-- В body обязательно: -
-- Особенность: -
+- __Назначение__: Получить всех пользователей
+- __HTTP METHOD__: GET
+- __endpoint__: api/getUsers
+- __Доступность__: All
+- __В body обязательно__: -
+- __Особенность__: -
 
 
 ## CREATE_SECTION:
-- Назначение: Создать секцию
-- HTTP METHOD: POST
-- endpoint: api/sections/create
-- Доступность: Authed
-- Роль: TEACHER, MODERATOR
-- В body обязательно: title - название секции
-- Особенность: невозможно создать две секции с одинаковым названием
+- __Назначение__: Создать секцию
+- __HTTP METHOD__: POST
+- __endpoint__: api/sections/create
+- __Доступность__: Authed
+- __Роль__: TEACHER, MODERATOR
+- __В body обязательно__: title - название секции
+- __Особенность__: невозможно создать две секции с одинаковым названием
 
 
 ## GET_ALL_SECTIONS:
-- Назначение: Получить все секции
-- HTTP METHOD: GET
-- endpoint: api/sections/get
-- Доступность: Authed
-- Роль: All
-- В body обязательно: -
-- Особенность: -
+- __Назначение__: Получить все секции
+- __HTTP METHOD__: GET
+- __endpoint__: api/sections/get
+- __Доступность__: Authed
+- __Роль__: All
+- __В body обязательно__: -
+- __Особенность__: -
 
 
 ## DELETE_SECTION:
-- Назначение: Удалить секцию
-- HTTP METHOD: DELETE
-- endpoint: api/sections/delete
-- Доступность: Authed
-- Роль: MODERATOR
-- В body обязательно: title - название секции
-- Особенность: невозможно удалить несуществующую секцию
+- __Назначение__: Удалить секцию
+- __HTTP METHOD__: DELETE
+- __endpoint__: api/sections/delete
+- __Доступность__: Authed
+- __Роль__: MODERATOR
+- __В body обязательно__: title - название секции
+- __Особенность__: невозможно удалить несуществующую секцию
 
 
 ## JOIN_SECTION:
-- Назначение: Записаться в секцию
-- HTTP METHOD: POST
-- endpoint: api/student/join
-- Доступность: Authed
-- Роль: STUDENT
-- В body обязательно: title - название секции
-- Особенность: невозможно присоедениться к секции X, если студент уже состоит в секции X.
+- __Назначение__: Записаться в секцию
+- __HTTP METHOD__: POST
+- __endpoint__: api/student/join
+- __Доступность__: Authed
+- __Роль__: STUDENT
+- __В body обязательно__: title - название секции
+- __Особенность__: невозможно присоедениться к секции X, если студент уже состоит в секции X.
 
 
 ## LEAVE_SECTION:
-- Назначение: Покинуть секцию
-- HTTP METHOD: DELETE
-- endpoint: api/student/leave
-- Доступность: Authed
-- Роль: STUDENT
-- В body обязательно: title - название секции
-- Особенность: невозможно покинуть секцию, в которой студент не состоит.
+- __Назначение__: Покинуть секцию
+- __HTTP METHOD__: DELETE
+- __endpoint__: api/student/leave
+- __Доступность__: Authed
+- __Роль__: STUDENT
+- __В body обязательно__: title - название секции
+- __Особенность__: невозможно покинуть секцию, в которой студент не состоит.
 
 
 ## GET_MY_SECTIONS:
-- Назначение: Посмотреть список секций, в которые я записан
-- HTTP METHOD: GET
-- endpoint: api/student/getMySections
-- Доступность: Authed
-- Роль: STUDENT
-- В body обязательно: -
-- Особенность: -
+- __Назначение__: Посмотреть список секций, в которые я записан
+- __HTTP METHOD__: GET
+- __endpoint__: api/student/getMySections
+- __Доступность__: Authed
+- __Роль__: STUDENT
+- __В body обязательно__: -
+- __Особенность__: -
 
 
 ## BECOME_TEACHER:
-- Назначение: Стать учителем.
-- HTTP METHOD: PATCH
-- endpoint: api/teacher/leadSection
-- Доступность: Authed
-- Роль: TEACHER
-- В body обязательно: title - название секции
-- Особенность: Невозможно стать учителем несуществующей секции. Невозможно стать учителем в секции, в которой уже есть учитель.
+- __Назначение__: Стать учителем.
+- __HTTP METHOD__: PATCH
+- __endpoint__: api/teacher/leadSection
+- __Доступность__: Authed
+- __Роль__: TEACHER
+- __В body обязательно__: title - название секции
+- __Особенность__: Невозможно стать учителем несуществующей секции. Невозможно стать учителем в секции, в которой уже есть учитель.
 
 
 ## LEAVE_TEACHER_POSITION:
-- Назначение: Перестать быть учителем в секции
-- HTTP METHOD: PATCH
-- endpoint: api/teacher/leaveSection
-- Доступность: Authed
-- Роль: TEACHER
-- В body обязательно: title - название секции
-- Особенность: Невозможно перестать быть учителем секции, в которой
+- __Назначение__: Перестать быть учителем в секции
+- __HTTP METHOD__: PATCH
+- __endpoint__: api/teacher/leaveSection
+- __Доступность__: Authed
+- __Роль__: TEACHER
+- __В body обязательно__: title - название секции
+- __Особенность__: Невозможно перестать быть учителем секции, в которой
 ты не являешься учителем. Невозможно перестать быть учителем
 несуществующей секции.
 
 
 ## GET_SECTION_STUDENTS:
-- Назначение: Получить студентов, записанных в данную секцию
-- HTTP METHOD: GET
-- endpoint: api/sections/section/getStudents
-- Доступность: Authed
-- Роль: All
-- В body обязательно: title - название секции
-- Особенность: -
+- __Назначение__: Получить студентов, записанных в данную секцию
+- __HTTP METHOD__: GET
+- __endpoint__: api/sections/section/getStudents
+- __Доступность__: Authed
+- __Роль__: All
+- __В body обязательно__: title - название секции
+- __Особенность__: -
 
 
 ## GET_STUDENT_SECTIONS:
-- Получить секции, в которые записан студент
-- HTTP METHOD: GET
-- endpoint: api/student/getSections
-- Доступность: Authed
-- Роль: All
-- В body обязательно: -
-- Особенность: -
+- __Назначение__: Получить секции, в которые записан студент
+- __HTTP METHOD__: GET
+- __endpoint__: api/student/getSections
+- __Доступность__: Authed
+- __Роль__: All
+- __В body обязательно__: -
+- __Особенность__: -

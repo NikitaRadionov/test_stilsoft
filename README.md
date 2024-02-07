@@ -22,11 +22,10 @@
 
 # API Методы:
 - [CREATE_SECTION](#CREATE_SECTION)
-- [GET_ALL_SECTIONS](#GET_ALL_SECTIONS)
+- [GET_SECTIONS](#GET_SECTIONS)
 - [DELETE_SECTION](#DELETE_SECTION)
 - [JOIN_SECTION](#JOIN_SECTION)
 - [LEAVE_SECTION](#LEAVE_SECTION)
-- [GET_MY_SECTIONS](#GET_MY_SECTIONS)
 - [BECOME_TEACHER](#BECOME_TEACHER)
 - [LEAVE_TEACHER_POSITION](#LEAVE_TEACHER_POSITION)
 - [GET_SECTION_STUDENTS](#GET_SECTION_STUDENTS)
@@ -42,13 +41,13 @@
 - __Особенность__: невозможно создать две секции с одинаковым названием
 
 
-## GET_ALL_SECTIONS:
-- __Назначение__: Получить все секции
+## GET_SECTIONS:
+- __Назначение__: Получить секции
 - __HTTP METHOD__: GET
 - __endpoint__: api/sections/get
 - __Доступность__: Authed
 - __Роль__: All
-- __В body обязательно__: -
+- __Params__: id, title, teacher (каждый параметр опционален)
 - __Особенность__: -
 
 
@@ -82,18 +81,8 @@
 - __Особенность__: невозможно покинуть секцию, в которой студент не состоит.
 
 
-## GET_MY_SECTIONS:
-- __Назначение__: Посмотреть список секций, в которые я записан
-- __HTTP METHOD__: GET
-- __endpoint__: api/student/getMySections
-- __Доступность__: Authed
-- __Роль__: STUDENT
-- __В body обязательно__: -
-- __Особенность__: -
-
-
 ## BECOME_TEACHER:
-- __Назначение__: Стать учителем.
+- __Назначение__: Стать учителем секции.
 - __HTTP METHOD__: PATCH
 - __endpoint__: api/teacher/leadSection
 - __Доступность__: Authed
@@ -120,15 +109,15 @@
 - __endpoint__: api/sections/section/getStudents
 - __Доступность__: Authed
 - __Роль__: All
-- __В body обязательно__: title - название секции
+- __Params__: section, student
 - __Особенность__: -
 
 
 ## GET_STUDENT_SECTIONS:
-- __Назначение__: Получить секции, в которые записан студент
+- __Назначение__: Получить секции, в которые я записан
 - __HTTP METHOD__: GET
 - __endpoint__: api/student/getSections
 - __Доступность__: Authed
 - __Роль__: All
-- __В body обязательно__: -
+- __Params__: section
 - __Особенность__: -

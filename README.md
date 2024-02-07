@@ -36,7 +36,7 @@
 - [GET_SECTION_STUDENTS](##GET_SECTION_STUDENTS)
 - [GET_STUDENT_SECTIONS](##GET_STUDENT_SECTIONS)
 
-## CREATE_USER:
+## <a id="CREATE_USER">CREATE_USER</a>:
 - Назначение: Создать пользователя
 - HTTP METHOD: POST
 - endpoint: api/auth/users/

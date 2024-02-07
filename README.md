@@ -21,7 +21,7 @@
 
 
 # API Методы:
-- [CREATE_USER](##CREATE_USER)
+- [CREATE_USER](#CREATE_USER)
 - [DELETE_USER](##DELETE_USER)
 - [GET_TOKEN](##GET_TOKEN)
 - [GET_ALL_USERS](##GET_ALL_USERS)
@@ -36,7 +36,7 @@
 - [GET_SECTION_STUDENTS](##GET_SECTION_STUDENTS)
 - [GET_STUDENT_SECTIONS](##GET_STUDENT_SECTIONS)
 
-## <a id="CREATE_USER">CREATE_USER</a>:
+## CREATE_USER:
 - Назначение: Создать пользователя
 - HTTP METHOD: POST
 - endpoint: api/auth/users/

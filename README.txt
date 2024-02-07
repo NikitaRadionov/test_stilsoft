@@ -6,26 +6,23 @@
 Таблицы в проекте:
 
 ApiUser (Пользователь) - встроенная модель django плюс поле role
+Section (Секция) - поля: title, teacher
+UserSection (Пользователь-секция) - поля: student, section, date
+
 
 Роли:
-ApiUser.MODERATOR - Модератор (создает секции)
-ApiUser.STUDDENT - Студент (состоит в секции)
-ApiUser.TEACHER - Преподаватель (заведует секцией)
+ApiUser.Role.MODERATOR - Модератор (создает секции)
+ApiUser.Role.STUDENT - Студент (состоит в секции)
+ApiUser.Role.TEACHER - Преподаватель (заведует секцией)
 
 Можно выбрать одну из трех ролей при регистрации, но изменить её в дальнейшем невозможно.
 Невозможно зарегистрировать пользователя не указав поле role
 
-Section:
 
-id title
-
-UserSection
-
-Студент Секция Время
-
+API Методы:
 
 CREATE_USER:
-Создать пользователя
+Назначение: Создать пользователя
 HTTP METHOD: POST
 endpoint: api/auth/users/
 в body обязательно:
@@ -34,13 +31,13 @@ password
 
 
 DELETE_USER:
-Удалить пользователя
+Назначение: Удалить пользователя
 HTTP METHOD: DELETE
 endpoint: api/auth/users/me
 
 
 GET_TOKEN:
-Получить аутентификационный токен
+Назначение: Получить аутентификационный токен
 HTTP METHOD: POST
 endpoint: api/auth/token/login/
 в body обязательно:
@@ -50,8 +47,9 @@ password
 ответ:
 auth_token
 
-GET_ALL_USERS: ?
-Получить всех пользователей
+
+GET_ALL_USERS:
+Назначение: Получить всех пользователей
 HTTP METHOD: GET
 endpoint: api/getUsers
 
@@ -63,11 +61,10 @@ endpoint: api/getUsers
 Особенность: -
 
 
-CREATE_SECTION: +
-Создать секцию
+CREATE_SECTION:
+Назначение: Создать секцию
 HTTP METHOD: POST
-endpoint: api/createSection
-или api/sections/create +
+endpoint: api/sections/create
 
 Доступность: Authed
 Роль: TEACHER, MODERATOR
@@ -78,11 +75,10 @@ title - название секции
 Особенность: невозможно создать две секции с одинаковым названием
 
 
-GET_ALL_SECTIONS: +
-Получить все секции
+GET_ALL_SECTIONS:
+Назначение: Получить все секции
 HTTP METHOD: GET
-endpoint: api/getSections
-или api/sections/get +
+endpoint: api/sections/get
 
 Доступность: Authed
 Роль: All
@@ -93,11 +89,10 @@ endpoint: api/getSections
 Особенность: -
 
 
-DELETE_SECTION: +
-Удалить секцию
+DELETE_SECTION:
+Назначение: Удалить секцию
 HTTP METHOD: DELETE
-endpoint: api/deleteSection ?
-или api/sections/delete +
+endpoint: api/sections/delete
 
 Доступность: Authed
 Роль: MODERATOR
@@ -108,13 +103,10 @@ title - название секции
 Особенность: невозможно удалить несуществующую секцию
 
 
-JOIN_SECTION: +
-Записаться в секцию
+JOIN_SECTION:
+Назначение: Записаться в секцию
 HTTP METHOD: POST
-endpoint: api/joinSection ?
-или api/sections/join ?
-или api/sections/student/join ?
-или api/student/join +
+endpoint: api/student/join
 
 Доступность: Authed
 Роль: STUDENT
@@ -126,13 +118,10 @@ title - название секции
 если студент уже состоит в секции X.
 
 
-LEAVE_SECTION: +
-Покинуть секцию
+LEAVE_SECTION:
+Назначение: Покинуть секцию
 HTTP METHOD: DELETE
-endpoint: api/leaveSection ?
-или api/sections/leave ?
-или api/sections/student/leave ?
-или api/student/leave +
+endpoint: api/student/leave
 
 Доступность: Authed
 Роль: STUDENT
@@ -144,8 +133,8 @@ title - название секции
 студент не состоит.
 
 
-GET_MY_SECTIONS: +
-Посмотреть список секций, в которые я записан
+GET_MY_SECTIONS:
+Назначение: Посмотреть список секций, в которые я записан
 HTTP METHOD: GET
 endpoint: api/student/getMySections
 
@@ -158,13 +147,10 @@ endpoint: api/student/getMySections
 Особенность:
 -
 
-BECOME_TEACHER (LEAD_SECTION): +
-Стать учителем.
+BECOME_TEACHER:
+Назначение: Стать учителем.
 HTTP METHOD: PATCH
-endpoint: api/becomeSectionTeacher ?
-или api/sections/becomeTeacher ?
-или api/sections/teacher/become ?
-или api/teacher/leadSection +
+endpoint: api/teacher/leadSection
 
 Доступность: Authed
 Роль: TEACHER
@@ -176,13 +162,10 @@ title - название секции
 Невозможно стать учителем в секции, в которой уже есть учитель.
 
 
-LEAVE_TEACHER_POSITION: +
-Перестать быть учителем в секции
+LEAVE_TEACHER_POSITION:
+Назначение: Перестать быть учителем в секции
 HTTP METHOD: PATCH
-endpoint: api/teacherLeave
-или api/sections/teacherLeave ?
-или api/sections/teacher/leave ?
-или api/teacher/leaveSection +
+endpoint: api/teacher/leaveSection
 
 Доступность: Authed
 Роль: TEACHER
@@ -195,8 +178,8 @@ title - название секции
 несуществующей секции.
 
 
-GET_SECTION_STUDENTS: +
-Получить студентов, записанных в данную секцию
+GET_SECTION_STUDENTS:
+Назначение: Получить студентов, записанных в данную секцию
 HTTP METHOD: GET
 endpoint: api/sections/section/getStudents
 
@@ -209,7 +192,7 @@ title - название секции
 Особенность:
 -
 
-GET_STUDENT_SECTIONS: +
+GET_STUDENT_SECTIONS:
 Получить секции, в которые записан студент
 HTTP METHOD: GET
 endpoint: api/student/getSections

@@ -182,14 +182,15 @@ class LeadSectionAPIView(UpdateAPIView):
             try:
                 section = Section.objects.get(title=title)
                 if section.teacher is None:
+                    section.teacher = user
+                    section.save()
+                    data["success"] = True
+                    data["data"] = SectionSerializer(section).data
+                else:
                     data["error"] = {
                         "code": 400,
                         "message": "Section already have teacher"
                         }
-                else:
-                    section.update(teacher=user)
-                    data["success"] = True
-                    data["data"] = SectionSerializer(section).data
             except Section.DoesNotExist:
                 data["error"] = {
                     "code": 400,
@@ -226,9 +227,10 @@ class UnleadSectionAPIView(UpdateAPIView):
                         "message": "Section haven't teacher"
                         }
                 else:
-                    section.update(teacher=None)
+                    section.teacher = None
+                    section.save()
                     data["success"] = True
-                    data["data"] = data = SectionSerializer(section).data
+                    data["data"] = SectionSerializer(section).data
             except Section.DoesNotExist:
                 data["error"] = {
                         "code": 400,

@@ -21,10 +21,6 @@
 
 
 # API Методы:
-- [CREATE_USER](#CREATE_USER)
-- [DELETE_USER](#DELETE_USER)
-- [GET_TOKEN](#GET_TOKEN)
-- [GET_ALL_USERS](#GET_ALL_USERS)
 - [CREATE_SECTION](#CREATE_SECTION)
 - [GET_ALL_SECTIONS](#GET_ALL_SECTIONS)
 - [DELETE_SECTION](#DELETE_SECTION)
@@ -35,36 +31,6 @@
 - [LEAVE_TEACHER_POSITION](#LEAVE_TEACHER_POSITION)
 - [GET_SECTION_STUDENTS](#GET_SECTION_STUDENTS)
 - [GET_STUDENT_SECTIONS](#GET_STUDENT_SECTIONS)
-
-## CREATE_USER:
-- __Назначение__: Создать пользователя
-- __HTTP METHOD__: POST
-- __endpoint__: api/auth/users/
-- __В body обязательно__: username, password
-
-
-## DELETE_USER:
-- __Назначение__: Удалить пользователя
-- __HTTP METHOD__: DELETE
-- __endpoint__: api/auth/users/me
-
-
-## GET_TOKEN:
-- __Назначение__: Получить аутентификационный токен
-- __HTTP METHOD__: POST
-- __endpoint__: api/auth/token/login/
-- __В body обязательно__: username, password
-- __Ответ__: auth_token
-
-
-## GET_ALL_USERS:
-- __Назначение__: Получить всех пользователей
-- __HTTP METHOD__: GET
-- __endpoint__: api/getUsers
-- __Доступность__: All
-- __В body обязательно__: -
-- __Особенность__: -
-
 
 ## CREATE_SECTION:
 - __Назначение__: Создать секцию

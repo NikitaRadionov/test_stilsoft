@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Q
 from .serializers import SectionSerializer, UserSectionSerializer
-from .models import ApiUser, Section, UserSection
+from .models import Section, UserSection
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
